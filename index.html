@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Grievance Redressal System</title>
+    <style>
+        * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+    }
+    
+    .contact {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+      font-size: 28px;
+    }
+    
+    .team-row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    
+    .team-member {
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+      margin: 0 10px;
+    }
+    
+    .image-container {
+      background-color: #CF9FFF;
+      padding: 20px 0;
+      margin-bottom: 20px;
+    }
+    
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    
+    .member-name {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+      font-size: 16px;
+    }
+    
+    .member-title {
+      color: black;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+    
+    .divider {
+      width: 50px;
+      height: 2px;
+      background-color: black;
+      margin: 0 auto 15px;
+    }
+    
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    
+    .social-icons a {
+      color: black;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+    
+    .social-icons a:hover {
+      color: black;
+    }
+    
+    /* Font Awesome icons replacement */
+    .icon {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      border: 1px solid black;
+      border-radius: 50%;
+      line-height: 25px;
+      text-align: center;
+      font-size: 14px;
+      color: black;
+    }
+  </style>
+    </style>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://kit.fontawesome.com/971f4df028.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="/logo.jpeg" alt="PGRS Logo">
+                <h1>Public Grievance Redressal System</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home" onclick="showSection('home')">Home</a></li>
+                    <li><a href="#" onclick="showSection('about')">About</a></li>
+                   
+                    <li><a href="#citizen-dashboard" onclick="showSection('citizen-dashboard')">My Dashboard</a></li>
+                    <li><a href="#login" onclick="showSection('login')">Login</a></li>
+                    <li><a href="#Contact" onclick="showSection('contact')">Contact Us</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="active-section">
+        <div class="hero">
+            <div class="container">
+                <h2 style="color: black;">Report & Resolve Public Issues</h2>
+                <p>A platform for citizens to submit grievances and track their resolution progress. Together, we can make our community better.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showSection('citizen-dashboard')">Submit a Grievance</button>
+                    <button class="btn btn-warning" onclick="showSection('track-grievance')">Track Your Grievance</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="recent-updates">
+                <h3>Recent Updates</h3>
+                <div class="card">
+                    <div class="update-card">
+                        <h4>Pothole on Main Street Repaired</h4>
+                        <p>The reported pothole near Central Park entrance has been repaired by the Road Department.</p>
+                        <div class="date">April 5, 2025</div>
+                    </div>
+                    <div class="update-card">
+                        <h4>Streetlight Maintenance Completed</h4>
+                        <p>All reported non-functional streetlights in Downtown district have been fixed.</p>
+                        <div class="date">April 3, 2025</div>
+                    </div>
+                    <div class="update-card">
+                        <h4>Water Supply Issue Resolved</h4>
+                        <p>The water supply issue in East neighborhood has been addressed. Normal water supply has resumed.</p>
+                        <div class="date">April 1, 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Enhanced Citizen Dashboard Section -->
+    <section id="citizen-dashboard" class="citizen-dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Citizen Dashboard</h2>
+                <div class="user-profile">
+                    <div class="profile-pic">J</div>
+                    <div>
+                        <p>John Doe</p>
+                        <small>john.doe@example.com</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-menu">
+                <div class="dashboard-menu-item active" onclick="switchTab('submit-grievance')">Submit Grievance</div>
+                <div class="dashboard-menu-item" onclick="switchTab('my-grievances')">My Grievances</div>
+                <div class="dashboard-menu-item" onclick="switchTab('notifications')">Notifications</div>
+                <div class="dashboard-menu-item" onclick="switchTab('profile')">My Profile</div>
+            </div>
+
+        
+
+            <!-- Submit Grievance Content -->
+            <div id="submit-grievance" class="dashboard-content active">
+                <div class="grievance-form-card">
+                    <h3 style="color: black;">Submit New Grievance</h3>
+                    <form id="grievance-submission-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="grievance-type">Grievance Type</label>
+                                <select id="grievance-type" class="form-control" required>
+                                    <option value="">-- Select Type --</option>
+                                    <option value="pothole">Pothole</option>
+                                    <option value="water">Water Supply Issue</option>
+                                    <option value="streetlight">Streetlight Issue</option>
+                                    <option value="garbage">Garbage Collection</option>
+                                    <option value="drainage">Drainage Issue</option>
+                                    <option value="road">Road Damage</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="grievance-priority">Priority</label>
+                                <select id="grievance-priority" class="form-control">
+                                    <option value="normal">Normal</option>
+                                    <option value="urgent">Urgent</option>
+                                    <option value="critical">Critical</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="grievance-title">Title</label>
+                            <input type="text" id="grievance-title" class="form-control" placeholder="Brief title of the issue" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="grievance-description">Description</label>
+                            <textarea id="grievance-description" class="form-control" placeholder="Provide a detailed description of the issue including when you first noticed it and any relevant details" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="grievance-address">Address</label>
+                            <input type="text" id="grievance-address" class="form-control" placeholder="Street address or nearest landmark" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Location on Map</label>
+                            <p class="text-muted" style="margin-bottom: 10px; color: black; font-size: 0.9rem;">Drag the pin to mark the exact location of the issue</p>
+                            <div class="map-container">
+                                
+                                <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3162.843675112847!2d-122.08424928469253!3d37.42206597982554!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fba02f741275b%3A0xbee4b50f2b3ec3bb!2sGoogleplex!5e0!3m2!1sen!2sin!4v1618580489052!5m2!1sen!2sin"
+      width="200%"
+      height="100%"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="grievance-image">Upload Images (Optional)</label>
+                                <input type="file" id="grievance-image" class="file-input" multiple accept="image/*">
+                                <small style="display: block; margin-top: 5px; color: #666;">You can upload up to 3 images (max 5MB each)</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="grievance-contact">Contact Number (Optional)</label>
+                                <input type="tel" id="grievance-contact" class="form-control" placeholder="Your contact number for follow-up">
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-top: 20px;">
+                            <button type="submit" class="btn btn-primary">Submit Grievance</button>
+                            <button type="reset" class="btn btn-warning" style="margin-left: 10px;">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+ <!-- My Grievances Content -->
+ <div id="my-grievances" class="dashboard-content">
+  <h2>My Submitted Grievances</h2>
+  <!-- Your grievances list content here -->
+  <div class="filters-row">
+      <div class="search-box">
+          <input type="text" placeholder="Search grievances..." class="form-control">
+      </div>
+      <div class="filter-options">
+          <select class="form-control">
+              <option value="all">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="in-progress">In Progress</option>
+              <option value="resolved">Resolved</option>
+              <option value="rejected">Rejected</option>
+          </select>
+      </div>
+  </div>
+  
+  <!-- Grievance items would go here -->
+</div>
+
+<!-- Notifications Content -->
+<div id="notifications" class="dashboard-content">
+  <h2>Notifications</h2>
+  <!-- Your notifications content here -->
+  <div class="notifications-header">
+      <div class="notification-filter">
+          <select class="form-control">
+              <option value="all">All Notifications</option>
+              <option value="unread">Unread Only</option>
+              <option value="updates">Updates</option>
+              <option value="responses">Official Responses</option>
+          </select>
+      </div>
+      <div class="notification-actions">
+          <button class="btn btn-sm btn-primary">Mark All as Read</button>
+      </div>
+  </div>
+  
+  <!-- Notification items would go here -->
+</div>
+
+
+
+<!-- My Profile Content -->
+<div id="my-profile" class="dashboard-content">
+  <h2>My Profile</h2>
+  <!-- Your profile content here -->
+  <div class="profile-section">
+      <div class="profile-header">
+          <div class="profile-avatar">
+              <img src="/profile.jpg" alt="Profile Picture">
+              <button class="btn btn-sm btn-primary change-photo">Change Photo</button>
+          </div>
+          <!-- Profile stats would go here -->
+      </div>
+      
+      <div class="profile-tabs">
+          <button class="profile-tab active" data-tab="personal">Personal Information</button>
+          <button class="profile-tab" data-tab="security">Security Settings</button>
+          <button class="profile-tab" data-tab="notifications">Notification Preferences</button>
+      </div>
+      
+      <!-- Profile tab content would go here -->
+  </div>
+</div>
+</div>
+
+<script>
+// Function to switch between tabs
+function switchTab(tabId) {
+  // Hide all content sections
+  const contentSections = document.querySelectorAll('.dashboard-content');
+  contentSections.forEach(section => {
+      section.classList.remove('active');
+  });
+  
+  // Show the selected content section
+  document.getElementById(tabId).classList.add('active');
+  
+  // Update active tab styling
+  const tabs = document.querySelectorAll('.tab');
+  tabs.forEach(tab => {
+      tab.classList.remove('active');
+  });
+  
+  // Find the clicked tab based on the content it controls
+  let activeTabId;
+  switch(tabId) {
+      case 'submit-grievance':
+          activeTabId = 'submit-tab';
+          break;
+      case 'my-grievances':
+          activeTabId = 'grievances-tab';
+          break;
+      case 'notifications':
+          activeTabId = 'notifications-tab';
+          break;
+      case 'my-profile':
+          activeTabId = 'profile-tab';
+          break;
+  }
+  
+  document.getElementById(activeTabId).classList.add('active');
+}
+
+// Function to handle profile sub-tabs
+function switchProfileTab(tabName) {
+  // Hide all profile tab content
+  const tabContents = document.querySelectorAll('.profile-tab-content');
+  tabContents.forEach(content => {
+      content.style.display = 'none';
+  });
+  
+  // Show the selected tab content
+  document.getElementById(tabName + '-tab').style.display = 'block';
+  
+  // Update active tab styling
+  const tabs = document.querySelectorAll('.profile-tab');
+  tabs.forEach(tab => {
+      tab.classList.remove('active');
+  });
+  
+  // Find and activate the clicked tab
+  const clickedTab = document.querySelector(`.profile-tab[data-tab="${tabName}"]`);
+  clickedTab.classList.add('active');
+}
+
+// Set up event listeners for profile tabs
+document.addEventListener('DOMContentLoaded', function() {
+  const profileTabs = document.querySelectorAll('.profile-tab');
+  profileTabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+          switchProfileTab(this.getAttribute('data-tab'));
+      });
+  });
+});
+</script>
+             
+<!-- Login Section -->
+<section id="login" class="login">
+    <div class="auth-container">
+        <h2 style="color: black;">Login</h2>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" class="form-control" placeholder="Enter your password">
+            </div>
+            <div class="form-group">
+                <select class="form-control">
+                    <option value="citizen">Login as Citizen</option>
+                    <option value="admin">Login as Admin</option>
+                </select>
+            </div>
+            <button type="button" class="btn btn-primary" style="width: 100%" onclick="handleLogin()">Login</button>
+        </form>
+        <p style="color: black;">Don't have an account? <a href="/index2.html" onclick="showSection('signup')">Sign up</a></p>
+    </div>
+
+
+    <!--Contact-->
+    <section id="Contact" class="active-section">
+    <div class="container">
+        <h1>Team Awesome</h1>
+        
+        <div class="team-row">
+          <div class="team-member">
+            <div class="image-container">
+              <img src="/Shilky.jpg" alt="Shilky">
+            </div>
+            <div class="member-name">Shilky</div>
+            <div class="member-title">Team Lead</div>
+            <div class="divider"></div>
+            <div class="social-icons">
+              <a href="https://www.linkedin.com/in/shilky-149073226/" class="icon"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://www.instagram.com/shilky__0099/#" class="icon"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=shilky0099@gmail.com&su=Hello&body=Hi%20there!" target="_blank" class="icon"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+          
+          <div class="team-member">
+            <div class="image-container">
+              <img src="/Anisha.jpg" alt="Anisha Tiwary">
+            </div>
+            <div class="member-name">Anisha Tiwary</div>
+            <div class="member-title">Co-Lead</div>
+            <div class="divider"></div>
+            <div class="social-icons">
+              <a href="https://www.linkedin.com/in/anisha-tiwary-1181b0276/" class="icon"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://www.instagram.com/_.anishat._?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="icon"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=2230066@kiit.ac.in&su=Hello&body=Hi%20there!" target="_blank"  class="icon"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+
+          <div class="team-member">
+            <div class="image-container">
+              <img src="/Taruna .jpg" alt="Taruna Das">
+            </div>
+            <div class="member-name">Taruna Das</div>
+            <div class="member-title">Developer</div>
+            <div class="divider"></div>
+            <div class="social-icons">
+              <a href="https://www.linkedin.com/in/taruna-das-aab33a251/" class="icon"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="https://www.instagram.com/_taruna2004_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="icon"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=2230135@kiit.ac.in&su=Hello&body=Hi%20there!" target="_blank"  class="icon"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+          
+          <div class="team-member">
+            <div class="image-container">
+              <img src="/Subhankar.jpg" alt="Paul Carter">
+            </div>
+            <div class="member-name">Subhanker Dey</div>
+            <div class="member-title">Researcher</div>
+            <div class="divider"></div>
+            <div class="social-icons">
+              <a href="#" class="icon"><i class="fa-brands fa-linkedin"></i></a>
+              <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=2230130@kiit.ac.in&su=Hello&body=Hi%20there!" target="_blank" class="icon"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    
+            
+         
+    </body>
+    </html>
